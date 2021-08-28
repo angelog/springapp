@@ -13,7 +13,7 @@ create table pro_produto (
     pro_descricao varchar(200),
     primary key (pro_id),
     unique key uni_produto_nome (pro_nome)
-);
+); 
 
 create table cat_categoria (
     cat_id bigint unsigned not null auto_increment,

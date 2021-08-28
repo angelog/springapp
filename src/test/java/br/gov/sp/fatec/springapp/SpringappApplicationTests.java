@@ -2,13 +2,11 @@ package br.gov.sp.fatec.springapp;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.gov.sp.fatec.springapp.entity.Produto;
 import br.gov.sp.fatec.springapp.repository.ProdutoRepository;
 

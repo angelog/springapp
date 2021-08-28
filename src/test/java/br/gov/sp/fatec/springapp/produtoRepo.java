@@ -2,6 +2,7 @@ package br.gov.sp.fatec.springapp;
 
 import br.gov.sp.fatec.springapp.entity.Produto;
 
+
 public interface produtoRepo {
 
     static void save(Produto produto) {

@@ -10,4 +10,5 @@ public interface ProdutoRepository extends JpaRepository<Produto,Long>{
     public Produto findByNome(String nome);
 
     public List<Produto> findByNomeContainsOrDescricaoContains(String nome, String descricao);
+    
 }
