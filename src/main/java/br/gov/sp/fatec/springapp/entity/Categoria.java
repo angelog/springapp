@@ -8,40 +8,36 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pro_produto")
-public class Produto {
+@Table(name = "cat_categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pro_id")
+    @Column(name = "cat_id")
     private Long id;
 
-    @Column(name = "pro_nome")
+    @Column(name = "cat_nome")
     private String nome;
 
-    @Column(name = "pro_peso")
-    private Integer peso;
-
-    @Column(name = "pro_descricao")
+    @Column(name = "cat_descricao")
     private String descricao;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "pca_produto_categoria",
-        joinColumns = { @JoinColumn(name = "pro_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "cat_id") })
-    private Set<Categoria> categorias;
+    @Column(name = "cat_ranking")
+    private Integer peso;
+   
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
+    private Set<Produto> produtos;
 
-    public Set<Categoria> getCategorias() {
-        return categorias;
+
+    public Set<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setCategorias(Set<Categoria> categorias) {
-        this.categorias = categorias;
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     public Long getId() {
@@ -60,14 +56,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Integer getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Integer peso) {
-        this.peso = peso;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -76,6 +64,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    
-    
+    public Integer getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
 }
+
