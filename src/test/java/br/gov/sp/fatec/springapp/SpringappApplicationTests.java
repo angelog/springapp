@@ -72,6 +72,7 @@ class SpringappApplicationTests {
 		assertFalse(produtoRepo.findByCategoriasNome("Teste").isEmpty());
 	}
 
+	
 	@Test
 	void findByProdutosNomeTest() {
 

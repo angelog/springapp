@@ -24,6 +24,7 @@ create table cat_categoria (
     unique key uni_categoria_nome (cat_nome)
 );
 
+
 create table pca_produto_categoria (
     pro_id bigint unsigned not null,
     cat_id bigint unsigned not null,

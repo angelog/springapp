@@ -6,5 +6,4 @@ import br.gov.sp.fatec.springapp.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario,Long>{
     
-    
 }
