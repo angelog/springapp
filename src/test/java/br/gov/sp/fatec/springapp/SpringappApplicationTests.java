@@ -3,6 +3,7 @@ package br.gov.sp.fatec.springapp;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Date;
 import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
@@ -12,8 +13,10 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.gov.sp.fatec.springapp.entity.Categoria;
+import br.gov.sp.fatec.springapp.entity.Movimentacao;
 import br.gov.sp.fatec.springapp.entity.Produto;
 import br.gov.sp.fatec.springapp.repository.CategoriaRepository;
+import br.gov.sp.fatec.springapp.repository.MovimentacaoRepository;
 import br.gov.sp.fatec.springapp.repository.ProdutoRepository;
 
 @SpringBootTest
@@ -26,6 +29,9 @@ class SpringappApplicationTests {
 
 	@Autowired
 	private CategoriaRepository categoriaRepo;
+
+	@Autowired
+	private MovimentacaoRepository moviRepo;
 
 	@Test
 	void contextLoads() {
@@ -89,6 +95,44 @@ class SpringappApplicationTests {
 		produtoRepo.save(produto);
 
 		assertFalse(categoriaRepo.findByProdutosNome("Teste").isEmpty());
+	}
+
+	@Test
+	void findByProNomeTest(){
+		Produto produtos = new Produto();
+		produtos.setNome("Teste");
+		produtos.setPeso(2);
+		produtos.setDescricao("Fruta");
+		produtoRepo.save(produtos);
+
+		Movimentacao movimento = new Movimentacao();
+		movimento.setSentido("Leste");
+		movimento.setQuantidade(3);
+		movimento.setData(new Date());
+		movimento.setProdutos(produtos);
+		moviRepo.save(movimento);
+
+		assertFalse(moviRepo.findByProNome("Teste").isEmpty());
+
+	}
+
+	@Test
+	void findByMovimentacaoSentidoTest(){
+		Produto produtos = new Produto();
+		produtos.setNome("Teste");
+		produtos.setPeso(2);
+		produtos.setDescricao("Fruta");
+		produtoRepo.save(produtos);
+
+		Movimentacao movimento = new Movimentacao();
+		movimento.setSentido("Leste");
+		movimento.setQuantidade(3);
+		movimento.setData(new Date());
+		movimento.setProdutos(produtos);
+		moviRepo.save(movimento);
+
+		assertFalse(produtoRepo.findByMovimentacaoSentido("Teste").isEmpty());
+
 	}
 }
 

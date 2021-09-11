@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -36,6 +37,10 @@ public class Produto {
         joinColumns = { @JoinColumn(name = "pro_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "cat_id") })
     private Set<Categoria> categorias;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produtos")
+    private Set<Movimentacao> movimento;
+
 
     public Set<Categoria> getCategorias() {
         return categorias;
