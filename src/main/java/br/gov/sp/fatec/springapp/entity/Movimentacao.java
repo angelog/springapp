@@ -34,6 +34,7 @@ public class Movimentacao {
     @JoinColumn(name = "pro_id")
     private Produto produtos;
 
+    
     public Long getId() {
         return id;
     }
