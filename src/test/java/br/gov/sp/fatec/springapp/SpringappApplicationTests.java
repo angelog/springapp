@@ -98,7 +98,7 @@ class SpringappApplicationTests {
 	}
 
 	@Test
-	void findByProNomeTest(){
+	void findByProdutossNomeTest(){
 		Produto produtos = new Produto();
 		produtos.setNome("Teste");
 		produtos.setPeso(2);
@@ -112,12 +112,12 @@ class SpringappApplicationTests {
 		movimento.setProdutos(produtos);
 		moviRepo.save(movimento);
 
-		assertFalse(moviRepo.findByProNome("Teste").isEmpty());
+		assertFalse(moviRepo.findByProdutosNome("Teste").isEmpty());
 
 	}
 
 	@Test
-	void findByMovimentacaoSentidoTest(){
+	void findByMovimentoSentidoTest(){
 		Produto produtos = new Produto();
 		produtos.setNome("Teste");
 		produtos.setPeso(2);
@@ -131,7 +131,7 @@ class SpringappApplicationTests {
 		movimento.setProdutos(produtos);
 		moviRepo.save(movimento);
 
-		assertFalse(produtoRepo.findByMovimentacaoSentido("Teste").isEmpty());
+		assertFalse(produtoRepo.findByMovimentoSentido("Leste").isEmpty());
 
 	}
 }
