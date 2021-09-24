@@ -41,7 +41,6 @@ public class Produto {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "produtos")
     private Set<Movimentacao> movimento;
 
-
     public Set<Categoria> getCategorias() {
         return categorias;
     }
