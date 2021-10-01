@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cat_categoria")
@@ -28,10 +29,10 @@ public class Categoria {
 
     @Column(name = "cat_ranking")
     private Integer peso;
-   
+
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
     private Set<Produto> produtos;
-
 
     public Set<Produto> getProdutos() {
         return produtos;
@@ -73,4 +74,3 @@ public class Categoria {
         this.peso = peso;
     }
 }
-
