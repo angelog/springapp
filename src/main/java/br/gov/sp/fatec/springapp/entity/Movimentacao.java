@@ -12,10 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="mov_movimentacao")
+@Table(name = "mov_movimentacao")
 public class Movimentacao {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mov_id")
@@ -29,12 +31,12 @@ public class Movimentacao {
 
     @Column(name = "mov_sentido")
     private String sentido;
-    
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pro_id")
     private Produto produtos;
 
-    
     public Long getId() {
         return id;
     }
