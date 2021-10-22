@@ -18,6 +18,7 @@ import br.gov.sp.fatec.springapp.entity.Produto;
 import br.gov.sp.fatec.springapp.repository.CategoriaRepository;
 import br.gov.sp.fatec.springapp.repository.MovimentacaoRepository;
 import br.gov.sp.fatec.springapp.repository.ProdutoRepository;
+import br.gov.sp.fatec.springapp.service.SegurancaService;
 
 @SpringBootTest
 @Transactional
@@ -32,6 +33,9 @@ class SpringappApplicationTests {
 
 	@Autowired
 	private MovimentacaoRepository moviRepo;
+
+	@Autowired
+	private SegurancaService segurancaService;
 
 	@Test
 	void contextLoads() {
@@ -78,7 +82,6 @@ class SpringappApplicationTests {
 		assertFalse(produtoRepo.findByCategoriasNome("Teste").isEmpty());
 	}
 
-	
 	@Test
 	void findByProdutosNomeTest() {
 
@@ -98,7 +101,7 @@ class SpringappApplicationTests {
 	}
 
 	@Test
-	void findByProdutossNomeTest(){
+	void findByProdutossNomeTest() {
 		Produto produtos = new Produto();
 		produtos.setNome("Teste");
 		produtos.setPeso(2);
@@ -117,7 +120,7 @@ class SpringappApplicationTests {
 	}
 
 	@Test
-	void findByMovimentoSentidoTest(){
+	void findByMovimentoSentidoTest() {
 		Produto produtos = new Produto();
 		produtos.setNome("Teste");
 		produtos.setPeso(2);
@@ -134,7 +137,12 @@ class SpringappApplicationTests {
 		assertFalse(produtoRepo.findByMovimentoSentido("Leste").isEmpty());
 
 	}
+
+	@Test
+	void novoProdutoTest() {
+		segurancaService.novoProduto("Caju", 2, "Fruta", "Teste");
+
+		assertNotNull(produtoRepo.findByNome("Caju"));
+	}
+
 }
-
-
-

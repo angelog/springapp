@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.gov.sp.fatec.springapp.controller.View;
 
 @Entity
 @Table(name = "cat_categoria")
@@ -19,9 +21,11 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cat_id")
+    @JsonView(View.ProdutoCompleto.class)
     private Long id;
 
     @Column(name = "cat_nome")
+    @JsonView(View.ProdutoSimplificado.class)
     private String nome;
 
     @Column(name = "cat_descricao")
@@ -30,7 +34,6 @@ public class Categoria {
     @Column(name = "cat_ranking")
     private Integer peso;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
     private Set<Produto> produtos;
 

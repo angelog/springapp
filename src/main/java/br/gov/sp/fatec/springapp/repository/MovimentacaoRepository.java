@@ -8,6 +8,7 @@ import br.gov.sp.fatec.springapp.entity.Movimentacao;
 
 public interface MovimentacaoRepository extends JpaRepository<Movimentacao, Long> {
 
-    public List<Movimentacao> findByProNome(String nome);
+    public List<Movimentacao> findByProdutosNome(String nome);
+
     
 }
