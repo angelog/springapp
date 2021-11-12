@@ -8,4 +8,10 @@ public class View {
     public static class ProdutoCompleto extends ProdutoSimplificado {
     };
 
+    public static class UsuarioSimplificado {
+    };
+
+    public static class UsuarioCompleto extends UsuarioSimplificado {
+    };
+
 }

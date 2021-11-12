@@ -1,3 +1,6 @@
+drop user 'user'@'localhost';
+drop schema armazem;
+
 create schema armazem;
 
 create user 'user'@'localhost' identified by 'pass123';
@@ -77,3 +80,9 @@ create table uau_usuario_autorizacao (
         references aut_autorizacao (aut_id)
         on delete restrict on update cascade
 );
+
+insert into usr_usuario (usr_nome, usr_email, usr_senha)
+    values ('admin','admin@gmail.com', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
+insert into aut_autorizacao (aut_nome)
+    values ('ROLE_ADMIN');
+insert into uau_usuario_autorizacao values (1, 1);
