@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,11 +32,16 @@ public class SegurancaServiceImpl implements SegurancaService {
     CategoriaRepository categoriaRepo;
 
     @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @Autowired
     UsuarioRepository usuarioRepo;
 
     @Autowired
     AutorizacaoRepository autorizacaoRepo;
 
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional
     public Produto novoProduto(String nome, Integer peso, String descricao, String categoria) {
         Categoria cat = categoriaRepo.findByNome(categoria);
@@ -54,6 +61,8 @@ public class SegurancaServiceImpl implements SegurancaService {
         return produto;
     }
 
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional
     public Usuario novoUsuario(String nome, String email, String senha, String autorizacao) {
 
@@ -75,12 +84,16 @@ public class SegurancaServiceImpl implements SegurancaService {
         return usuario;
     }
 
+    @Override
+    @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
     public List<Produto> buscarTodosProdutos() {
 
         return produtoRepo.findAll();
 
     }
 
+    @Override
+    @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
     public List<Usuario> buscarTodosUsuarios() {
         return usuarioRepo.findAll();
     }
