@@ -83,7 +83,7 @@ create table adega(
     ad_quantidade int not null,
     ad_marca varchar(20),
     ad_local varchar 20
-)
+);
 
 insert into usr_usuario (usr_nome, usr_email, usr_senha)
     values ('admin','admin@gmail.com', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
