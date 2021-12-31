@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import br.gov.sp.fatec.springapp.entity.Adega;
 import br.gov.sp.fatec.springapp.entity.Produto;
 import br.gov.sp.fatec.springapp.entity.Usuario;
 

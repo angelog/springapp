@@ -18,7 +18,7 @@ import br.gov.sp.fatec.springapp.service.SegurancaService;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/adega")
-public class AdegaController {
+public class Adegacontroller {
 
     @Autowired
     private SegurancaService segurancaService;
@@ -31,7 +31,7 @@ public class AdegaController {
 
     @PostMapping
     @JsonView(View.AdegaCompleto.class)
-    public Produto novoPro(@RequestBody Adega produto) {
+    public Adega novoPro(@RequestBody Adega produto) {
         return segurancaService.novoPro(produto.getNome(), produto.getQuantidade(), produto.getMarca(),
                 "ROLE_PRODUTO");
     }

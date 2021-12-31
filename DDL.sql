@@ -1,6 +1,3 @@
-drop user 'user'@'localhost';
-drop schema armazem;
-
 create schema armazem;
 
 create user 'user'@'localhost' identified by 'pass123';

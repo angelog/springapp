@@ -13,10 +13,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.gov.sp.fatec.springapp.entity.Adega;
 import br.gov.sp.fatec.springapp.entity.Autorizacao;
 import br.gov.sp.fatec.springapp.entity.Categoria;
 import br.gov.sp.fatec.springapp.entity.Produto;
 import br.gov.sp.fatec.springapp.entity.Usuario;
+import br.gov.sp.fatec.springapp.repository.AdegaRepository;
 import br.gov.sp.fatec.springapp.repository.AutorizacaoRepository;
 import br.gov.sp.fatec.springapp.repository.CategoriaRepository;
 import br.gov.sp.fatec.springapp.repository.ProdutoRepository;
@@ -40,6 +42,9 @@ public class SegurancaServiceImpl implements SegurancaService {
     @Autowired
     AutorizacaoRepository autorizacaoRepo;
 
+    @Autowired
+    AdegaRepository adegaRepo;
+    
     @Override
     @PreAuthorize("hasRole('ADMIN')")
     @Transactional
@@ -95,7 +100,29 @@ public class SegurancaServiceImpl implements SegurancaService {
     @Override
     @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
     public List<Usuario> buscarTodosUsuarios() {
+
         return usuarioRepo.findAll();
+    }
+
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
+    public Adega novoPro(String nome, Integer quantidade, String marca, String local) {
+        Adega adega = new Adega();
+        adega.setNome(nome);
+        adega.setQuantidade(quantidade);
+        adega.setMarca(marca);
+        adega.setLocal(local);
+        adegaRepo.save(adega);
+
+        return adega;
+    }
+
+    @Override
+    @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
+    public List<Adega> buscarTodosPro() {
+
+        return adegaRepo.findAll();
     }
 
     @Override

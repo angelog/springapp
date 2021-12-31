@@ -1,6 +1,13 @@
 package br.gov.sp.fatec.springapp.entity;
 
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.gov.sp.fatec.springapp.controller.View;
 
 public class Adega {
 
@@ -26,7 +33,6 @@ public class Adega {
     @JsonView(View.ProdutoCompleto.class)
     private String local;
 
-
     public Long getId() {
         return id;
     }
@@ -44,26 +50,27 @@ public class Adega {
     }
 
     public Integer getQuantidade() {
-        return peso;
+        return quantidade;
     }
 
     public void setQuantidade(Integer quantidade) {
-        this.peso = peso;
+        this.quantidade = quantidade;
     }
 
     public String getMarca() {
-        return descricao;
+        return marca;
     }
 
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
-    public void getlocal(){
+    public String getLocal() {
         return local;
     }
 
-    public void setlocal(String local){
-        this.local = local
+    public void setLocal(String local) {
+        this.local = local;
     }
+
 }

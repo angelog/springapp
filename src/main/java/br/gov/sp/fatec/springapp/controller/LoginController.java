@@ -1,3 +1,5 @@
+package br.gov.sp.fatec.springapp.controller;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gov.sp.fatec.springbootapp.security.JwtUtils;
-import br.gov.sp.fatec.springbootapp.security.Login;
+import br.gov.sp.fatec.springapp.security.JwtUtils;
+import br.gov.sp.fatec.springapp.security.Login;
 
 @RestController
 @RequestMapping(value = "/login")
