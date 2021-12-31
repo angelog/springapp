@@ -82,7 +82,7 @@ create table adega(
     ad_produto varchar (200),
     ad_quantidade int not null,
     ad_marca varchar(20),
-    ad_local varchar 20
+    ad_local varchar(20)
 );
 
 insert into usr_usuario (usr_nome, usr_email, usr_senha)
