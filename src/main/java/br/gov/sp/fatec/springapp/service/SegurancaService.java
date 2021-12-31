@@ -17,4 +17,7 @@ public interface SegurancaService extends UserDetailsService {
 
     public List<Usuario> buscarTodosUsuarios();
 
+    public Adega novoPro(String nome, Integer quantidade, String marca, String local);
+
+    public List<Adega> buscarTodosPro();
 }

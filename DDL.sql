@@ -80,6 +80,13 @@ create table uau_usuario_autorizacao (
         references aut_autorizacao (aut_id)
         on delete restrict on update cascade
 );
+create table adega(
+    ad_cod bigint auto_increment,
+    ad_produto varchar (200),
+    ad_quantidade int not null,
+    ad_marca varchar(20),
+    ad_local varchar 20
+)
 
 insert into usr_usuario (usr_nome, usr_email, usr_senha)
     values ('admin','admin@gmail.com', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
